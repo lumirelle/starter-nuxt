@@ -77,7 +77,7 @@ outputs = []
 cache = { enabled = true, command_inputs = ["hk --version"] }
 
 [tasks.pretest]
-run = "playwright-core install --with-deps"
+run = "playwright-core install"
 
 [tasks.test]
 description = "Run tests."
