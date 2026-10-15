@@ -1,0 +1,39 @@
+{
+  "version": 4,
+  "verify": "run `mise run check`, then `mise run test`",
+  "managers": [
+    {
+      "name": "mise",
+      "kind": "toolchain",
+      "detect": ["mise.toml", "mise.lock"],
+      "note": "project-scoped: --local keeps this off the machine-global config",
+      "commands": {
+        "check": "mise outdated --local --json",
+        "bump": {
+          "default": "mise upgrade --local",
+          "major": "mise upgrade --local --bump"
+        }
+      }
+    },
+    {
+      "name": "nub",
+      "kind": "package",
+      "detect": ["nub.lock", "packageManager=nub"],
+      "note": "taze declared in devDependencies, so the Node lane is available; --request-timeout raised from taze's 5s default because several packages time out against this registry",
+      "commands": {
+        "check": "nub outdated --json",
+        "bump": {
+          "default": "nub exec taze -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 30000",
+          "patch": "nub exec taze patch -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 30000",
+          "minor": "nub exec taze minor -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 30000",
+          "major": "nub exec taze major -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 30000"
+        },
+        "refresh": [
+          "node --input-type=commonjs -e \"require('fs').rmSync('node_modules',{recursive:true,force:true})\"",
+          "nub install",
+          "nub dedupe"
+        ]
+      }
+    }
+  ]
+}
