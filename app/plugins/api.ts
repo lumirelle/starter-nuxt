@@ -38,7 +38,6 @@ type Base$Fetch<
   request: R,
   opts?: O,
 ) => Promise<
-  // @ts-expect-error Excessive depth
   TypedInternalResponse<MappedR, T, NitroFetchOptions<R> extends O ? 'get' : ExtractedRouteMethod<R, O>>
 >
 export type $Api<T = unknown, R extends ApiNitroFetchRequest = ApiNitroFetchRequest> = Base$Fetch<T, R> & {
@@ -65,6 +64,7 @@ export default defineNuxtPlugin({
   // Make plugin who is standlone loading parallel, to gain better performance.
   parallel: true,
   setup(nuxtApp) {
+  // @ts-expect-error TODO: Type error
     const api = $fetch.create<unknown, ApiNitroFetchRequest>({
     // Custom `baseURL` for convenience
       baseURL: BASE_URL,
