@@ -24,6 +24,7 @@ export default defineConfig<PresetWind4Theme>({
       ...presetLocalIcons(),
       extraProperties: {
         'display': 'inline-block',
+        'forced-color-adjust': 'preserve-parent-color',
         'vertical-align': 'middle',
       },
     }),

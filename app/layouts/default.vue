@@ -5,7 +5,7 @@
     <AppHeader />
     <slot />
     <AppFooter>
-      <div text="sm center" m="x-auto t-5" opacity-25>
+      <div mx-auto mt-5 text="sm center" opacity-65>
         [Default Layout]
       </div>
     </AppFooter>

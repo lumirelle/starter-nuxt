@@ -6,11 +6,9 @@
     "./shared/**/*.ts"
   ],
   "ignoreDependencies": [
-    // We uses their types, but we don"t import them directly
-    "nitropack",
-    "ofetch",
+    // For devtools
+    "nuxtseo-devtools-host",
     // Frontend libraries
-    "@takumi-rs/core",
     "@vueuse/core",
     "vue-router",
     // Icons
@@ -18,7 +16,6 @@
     // Serve tools
     "serve",
     // Quality
-    "@lumirelle/oxlint-config",
     "@unocss/eslint-config",
     "vue-tsc",
     // Node.js dependencies manager

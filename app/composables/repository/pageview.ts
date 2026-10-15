@@ -1,5 +1,12 @@
 export function usePageviewRepository() {
   return {
-    get: () => $api('/v1/pageview'),
+    get: async () => {
+      try {
+        return await $fetch('/api/v1/pageview')
+      }
+      catch (e) {
+        console.error('Fetching pageview failurei.\n\n', e)
+      }
+    },
   }
 }

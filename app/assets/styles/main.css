@@ -1,21 +1,42 @@
 /* Base reset and defaults */
-html {
-  box-sizing: border-box;
-}
-html.dark {
-  color-scheme: dark;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
 *,
 *::before,
 *::after {
   box-sizing: inherit;
 }
 
-::picker(select) {
-  border: none;
+:root:not([data-theme='light']),
+:root[data-theme='dark'] {
+  --bg: var(--bg-color, oklch(0.171 0 0));
+  --fg: oklch(0.982 0 0);
 }
+
+:root[data-theme='light'] {
+  --bg: var(--bg-color, oklch(1 0 0));
+  --fg: oklch(0.046 0 0);
+}
+
+@media (prefers-contrast: more) {
+  :root[data-theme='dark'] {
+    --fg: oklch(1 0 0);
+  }
+  :root[data-theme='light'] {
+    --fg: oklch(0 0 0);
+  }
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Offset for fixed header - otherwise anchor headers are cutted */
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+

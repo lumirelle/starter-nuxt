@@ -1,7 +1,8 @@
 {
   "seo": {
     "home": {
-      "title": "Home"
+      "title": "Home",
+      "description": "Homepage."
     }
   },
   "status": {

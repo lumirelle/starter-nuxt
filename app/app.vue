@@ -1,18 +1,26 @@
 <script lang="ts" setup>
-/**
- * Schema.org configuration.
- * @see https://nuxtseo.com/docs/schema-org/guides/default-schema-org#configuring-your-defaults
- */
-useSchemaOrg([
-  defineWebSite(),
-  defineWebPage(),
-  defineOrganization(),
-])
+const darkMode = usePreferredDark()
+const colorMode = useColorMode()
+const colorScheme = computed(() => {
+  return {
+    system: darkMode ? 'dark light' : 'light dark',
+    light: 'only light',
+    dark: 'only dark',
+  }[colorMode.preference]
+})
 
-/**
- * OG Image configuration. Title and description will be inferred, this will be overridden by upstream pages that use different templates.
- */
-defineOgImage('Page.takumi', {}, { alt: 'Vitesse Starter for Nuxt 4' })
+const { locale } = useI18n()
+useHead({
+  htmlAttrs: {
+    lang: () => locale.value,
+  },
+  meta: [{ name: 'color-scheme', content: colorScheme }],
+})
+
+if (import.meta.server)
+  setJsonLd(createWebSiteSchema())
+
+defineOgImage('Page.takumi', {}, { alt: 'Starter template for Nuxt 4 — This is a Nuxt 4 application template, built on top of Vite 8.' })
 </script>
 
 <template>

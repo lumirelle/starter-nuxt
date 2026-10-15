@@ -6,11 +6,11 @@ const availableLocales = computed(() =>
     .map(i => ({ ...i, flag: getNationFlag(i.code) })),
 )
 
-function getNationFlag(code: string): string {
+function getNationFlag(code: AppLocales.Code): string {
   switch (code) {
-    case 'zh':
+    case 'zh-Hans':
       return 'i-twemoji-flag-china'
-    case 'en':
+    case 'en-US':
       return 'i-twemoji-flag-united-kingdom'
     default:
       return 'i-twemoji-flag-united-nations'

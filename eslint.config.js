@@ -13,9 +13,7 @@ export default antfu(
       },
     },
   },
-  /**
-   * Don't forget to set `standalone: false` in your Nuxt ESLint module options.
-   */
+  /** Don't forget to set `standalone: false` in your Nuxt ESLint module options. */
   nuxt(),
   ...oxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
 )

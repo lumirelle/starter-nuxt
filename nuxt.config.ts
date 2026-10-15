@@ -1,15 +1,14 @@
-export const APP_NAME = 'Vitesse for Nuxt 4'
-export const APP_DESCRIPTION = 'This is a Nuxt 4 application template, built on top of Vitesse.'
-export const APP_THEME_LIGHT_COLOR = 'white'
-export const APP_THEME_DARK_COLOR = '#222222'
-export const APP_LOCALES = [
-  { code: 'en', language: 'en-US', name: 'English', file: 'en-US.json' },
+const APP_NAME = 'Starter template for Nuxt 4'
+const APP_DESCRIPTION = 'This is a Nuxt 4 application template, built on top of Vite 8.'
+const APP_URL = 'https://starter-nuxt.lumirelle.me'
+const APP_LOCALES = [
+  { code: 'en-US', language: 'en-US', name: 'English', file: 'en-US.json' },
   /**
    * For Chinese, it should be expressed with a script subtag instead of a region subtag. So we use `Hans` (for Simplified) and `Hant` (for Traditional) as recommended by BCP 47.
    *
    * @see https://en.wikipedia.org/wiki/IETF_language_tag#ISO_3166-1_and_UN_M.49
    */
-  { code: 'zh', language: 'zh-Hans', name: '简体中文', file: 'zh-Hans.json' },
+  { code: 'zh-Hans', language: 'zh-Hans', name: '简体中文', file: 'zh-Hans.json' },
   // ...
 ]
 
@@ -25,10 +24,10 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     '@nuxtjs/color-mode',
     '@nuxtjs/i18n',
-    '@nuxtjs/seo',
     '@unocss/nuxt',
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
+    'nuxt-og-image',
   ],
 
   imports: {
@@ -42,14 +41,14 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'en-US',
+      },
       templateParams: { separator: '·' },
       meta: [
         // `favicon.ico`, `apple-touch-icon.png` are handled by `nuxt-seo-utils`
         // See https://nuxtseo.com/docs/nuxt-seo/guides/using-the-modules#seo-utils
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
-        // See https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta/name/theme-color
-        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: APP_THEME_LIGHT_COLOR },
-        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: APP_THEME_DARK_COLOR },
       ],
     },
   },
@@ -65,18 +64,25 @@ export default defineNuxtConfig({
   site: {
     name: APP_NAME,
     description: APP_DESCRIPTION,
+    url: APP_URL,
   },
 
   colorMode: {
     // Better eyes!
     fallback: 'dark',
+    // Use `data-*` to perform custom color mode logic is much better than class (less conflict).
+    dataValue: 'theme',
   },
 
   runtimeConfig: {
-    EXAMPLE_PRIVATE_CONFIG: undefined,
+    example: {
+      secret: undefined,
+    },
 
     public: {
-      EXAMPLE_PUBLIC_CONFIG: undefined,
+      example: {
+        publicSecret: undefined,
+      },
     },
   },
 
@@ -92,26 +98,31 @@ export default defineNuxtConfig({
     typedPages: true,
   },
 
-  compatibilityDate: '2026-06-20',
+  compatibilityDate: '2026-10-15',
 
-  vite: {
-    optimizeDeps: {
-      include: [
-        '@antfu/utils',
-        '@unhead/schema-org/vue',
-        '@vueuse/core',
+  nitro: {
+    externals: {
+      /** @see https://nitro.build/config#noexternals */
+      inline: [
+        'shiki',
+        '@shikijs/langs',
+        '@shikijs/themes',
+        '@shikijs/types',
+        '@shikijs/engine-javascript',
+        '@shikijs/core',
       ],
     },
   },
 
-  a11y: {
-    axe: {
-      options: {
-        rules: [
-          { id: 'color-contrast', enabled: false },
-        ],
-      },
-      runOptions: {},
+  vite: {
+    css: {
+      transformer: 'lightningcss',
+    },
+    optimizeDeps: {
+      include: [
+        '@antfu/utils',
+        '@vueuse/core',
+      ],
     },
   },
 
@@ -124,7 +135,7 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: APP_LOCALES,
-    defaultLocale: 'en',
+    defaultLocale: 'en-US',
     detectBrowserLanguage: {
       cookieKey: 'locale',
     },
@@ -164,10 +175,6 @@ export default defineNuxtConfig({
         { src: 'maskable-icon.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
       ],
     },
-  },
-
-  robots: {
-    blockNonSeoBots: true,
   },
 
   vueuse: {

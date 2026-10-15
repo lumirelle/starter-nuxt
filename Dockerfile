@@ -4,9 +4,7 @@ WORKDIR /app
 
 COPY mise.toml mise.lock package.json nub.lock ./
 
-RUN mise install
-
-RUN mise deps
+RUN mise install && mise deps
 
 COPY . .
 RUN mise run build

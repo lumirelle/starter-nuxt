@@ -30,10 +30,10 @@ export default defineConfig({
           include: ['./test/nuxt/*.{test,spec}.ts'],
           benchmark: { include: ['./test/nuxt/*.{bench,benchmark}.ts'] },
           environment: 'nuxt',
+          /** @see https://github.com/npmx-dev/npmx.dev/blob/main/vite.config.ts#L235 */
           environmentOptions: {
             nuxt: {
               rootDir,
-              // See https://github.com/npmx-dev/npmx.dev/blob/main/vite.config.ts#L203
               overrides: {
                 vue: {
                   runtimeCompiler: true,
@@ -48,6 +48,7 @@ export default defineConfig({
           },
           browser: {
             enabled: true,
+            // @ts-expect-error TODO: Type error.
             provider: playwright(),
             instances: [{ browser: 'chromium', headless: true }],
           },
@@ -62,13 +63,10 @@ export default defineConfig({
           },
           testTimeout: 120_000,
           environment: 'node',
+          /** @see https://github.com/npmx-dev/npmx.dev/blob/main/playwright.config.ts#L30 */
           environmentOptions: {
             nuxt: {
-              overrides: {
-                fonts: {
-                  provider: 'local',
-                },
-              },
+              rootDir,
             },
           },
         },

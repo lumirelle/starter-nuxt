@@ -1,14 +1,17 @@
 <script setup lang="ts">
 const { t } = useI18n()
 
-useHead({
-  title: t('seo.home.title'),
+useSeoMeta({
+  title: () => t('seo.home.title'),
+  ogTitle: () => t('seo.home.title'),
+  twitterTitle: () => t('seo.home.title'),
+  description: () => t('seo.home.description'),
+  ogDescription: () => t('seo.home.description'),
+  twitterDescription: () => t('seo.home.description'),
 })
 
 const online = useOnline()
-
-const navRepository = useNavRepository()
-const { data } = await useAsyncData('nav', () => navRepository.get())
+const { data: nav } = await useNav()
 </script>
 
 <template>
@@ -19,7 +22,7 @@ const { data } = await useAsyncData('nav', () => navRepository.get())
         {{ t('status.offline') }}
       </div>
 
-      <AppNav v-if="data?.payload" :items="data.payload.items" />
+      <AppNav v-if="nav?.payload" :items="nav.payload.items" />
     </div>
   </main>
 </template>
