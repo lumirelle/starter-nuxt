@@ -19,13 +19,14 @@ Starter template for Nuxt 4
 ### Framework
 
 - 💚 [Nuxt 4](https://nuxt.com/)
-  - 🛟 Server-Side Rendering (SSR);
-  - 📦 Edge Side Rendering (ESR) &ndash; Zero-config cloud functions and deploy.
-  - 🗺️ File-based routing;
-  - 📡 API (components, composables, utils, ...) auto importing;
-  - 🧩 Module system;
-  - 🏗️ [Layout system](./app/layouts);
-  - 🪸 State management;
+  - 🛟 Server-Side Rendering (SSR)
+  - 📦 Edge Side Rendering (ESR) &ndash; Zero-config cloud functions and deploy
+  - 🗺️ File-based routing
+  - 📡 API (components, composables, utils, ...) auto importing
+  - 🧩 Module system
+  - 🏗️ [Layout system](./app/layouts)
+  - 🪸 State management
+  - 🕷️ Basic SEO
   - ...etc.
 
 - ⚡️ [Vite 8 (Rolldown)](https://vite.dev/) &ndash; A blazing fast frontend build tool powering the next generation of web applications.
@@ -34,7 +35,7 @@ Starter template for Nuxt 4
 
 ### Search Engine Optimization (SEO)
 
-- 🕷️ [Nuxt SEO](https://github.com/harlan-zw/nuxt-seo) &ndash; Fully equipped Technical SEO for busy Nuxters.
+- 🕷️ [Nuxt Og Image](https://nuxtseo.com/docs/og-image/getting-started/introduction) &ndash; Generates social media preview images (og:image) using Vue templates.
 
 ### Progressive Web App (PWA)
 
@@ -71,10 +72,6 @@ Starter template for Nuxt 4
 - ♿ [A11y](https://github.com/nuxt/a11y) &ndash; Provides real-time accessibility feedback and automated testing right in your browser during development.
 
 - 🧪 [Test Utils](https://github.com/nuxt/test-utils) - Utilities for testing Nuxt applications.
-
-## IDE
-
-We recommend using [VS Code](https://code.visualstudio.com/) with [Volar](https://github.com/vuejs/language-tools.git) to get the best experience.
 
 ## Variations
 
