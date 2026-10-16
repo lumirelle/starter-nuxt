@@ -48,7 +48,6 @@ export default defineConfig({
           },
           browser: {
             enabled: true,
-            // @ts-expect-error TODO: Type error.
             provider: playwright(),
             instances: [{ browser: 'chromium', headless: true }],
           },
