@@ -15,3 +15,4 @@ jobs:
       id-token: write
     with:
       cache-preset: 'mise-task,nub'
+      primary-os: ubuntu-latest

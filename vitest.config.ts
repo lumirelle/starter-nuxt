@@ -2,7 +2,6 @@ import { defineVitestProject } from '@nuxt/test-utils/config'
 import { playwright } from '@vitest/browser-playwright'
 import { defineConfig } from 'vitest/config'
 
-// @ts-expect-error TODO: Type error.
 const rootDir = import.meta.dirname
 
 export default defineConfig({
