@@ -119,10 +119,7 @@ export default defineNuxtConfig({
       transformer: 'lightningcss',
     },
     optimizeDeps: {
-      include: [
-        '@antfu/utils',
-        '@vueuse/core',
-      ],
+      include: ['@antfu/utils', '@vueuse/core'],
     },
   },
 

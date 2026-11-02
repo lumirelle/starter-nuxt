@@ -12,10 +12,10 @@ export interface ServerResponse<DataT, MetaT extends Record<string, any>> {
  * @param meta Metadata response to client
  * @returns Standard server response object
  */
-export function createResponse<
-  PayloadT,
-  MetaT extends Record<string, any> = Record<string, any>,
->(payload: Nullable<PayloadT> = null, meta: Nullable<MetaT> = null): ServerResponse<PayloadT, MetaT> {
+export function createResponse<PayloadT, MetaT extends Record<string, any> = Record<string, any>>(
+  payload: Nullable<PayloadT> = null,
+  meta: Nullable<MetaT> = null,
+): ServerResponse<PayloadT, MetaT> {
   return {
     payload,
     meta,
@@ -36,7 +36,7 @@ export function createQueryResponse<T>(
   total: number,
   page: number,
   pageSize: number,
-): ServerResponse<T[], { total: number, page: number, pageSize: number, pageCount: number }> {
+): ServerResponse<T[], { total: number; page: number; pageSize: number; pageCount: number }> {
   return createResponse(payload, {
     total,
     page,
