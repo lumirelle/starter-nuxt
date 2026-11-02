@@ -3,7 +3,7 @@
     "./app/**/*.{ts,vue}",
     "./server/**/*.{ts,vue}",
     "./test/**/*.{ts,vue}",
-    "./shared/**/*.ts"
+    "./shared/**/*.ts",
   ],
   "ignoreDependencies": [
     // For devtools
@@ -16,9 +16,9 @@
     // Serve tools
     "serve",
     // Quality
-    "@unocss/eslint-config",
+    "oxfmt",
     "vue-tsc",
     // Node.js dependencies manager
-    "taze"
-  ]
+    "taze",
+  ],
 }

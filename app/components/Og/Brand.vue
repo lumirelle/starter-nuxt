@@ -24,5 +24,5 @@ const width = computed(() => props.height)
     :width="width"
     :height="height"
     :style="{ width: `${width}px`, height: `${height}px` }"
-  >
+  />
 </template>

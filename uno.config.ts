@@ -46,18 +46,27 @@ export default defineConfig<PresetWind4Theme>({
   },
   shortcuts: [
     // Nuxt & Vite colors
-    [/^(bg|text|decoration|border|fill|stroke)-(nuxt|vite)$/, ([, prefix, suffix]) => {
-      const color = suffix === 'nuxt' ? 'green-400' : 'purple-500'
-      return `${prefix}-${color}`
-    }],
+    [
+      /^(bg|text|decoration|border|fill|stroke)-(nuxt|vite)$/,
+      ([, prefix, suffix]) => {
+        const color = suffix === 'nuxt' ? 'green-400' : 'purple-500'
+        return `${prefix}-${color}`
+      },
+    ],
     // Vitesse colors, use Nuxt color for normal state, Vite color for hover state, with transition on hover
-    [/^(bg|text|decoration|border|fill|stroke)-vitesse$/, ([, prefix]) => {
-      return `${prefix}-nuxt hover:${prefix}-vite transition-colors duration-200 ease-in-out`
-    }],
+    [
+      /^(bg|text|decoration|border|fill|stroke)-vitesse$/,
+      ([, prefix]) => {
+        return `${prefix}-nuxt hover:${prefix}-vite transition-colors duration-200 ease-in-out`
+      },
+    ],
     // Vitesse colors with specific states
-    [/^(bg|text|decoration|border|fill|stroke)-vitesse-(nuxt|vite)$/, ([, prefix, suffix]) => {
-      return `hover:${prefix}-${suffix} transition-colors duration-200 ease-in-out`
-    }],
+    [
+      /^(bg|text|decoration|border|fill|stroke)-vitesse-(nuxt|vite)$/,
+      ([, prefix, suffix]) => {
+        return `hover:${prefix}-${suffix} transition-colors duration-200 ease-in-out`
+      },
+    ],
   ],
 })
 
@@ -72,10 +81,8 @@ function presetLocalIcons(): IconsOptions {
     processor(props, meta) {
       if (meta.collection === 'public') {
         let { width = 1, height = 1 } = props
-        if (typeof width === 'string')
-          width = Number.parseInt(width)
-        if (typeof height === 'string')
-          height = Number.parseInt(height)
+        if (typeof width === 'string') width = Number.parseInt(width)
+        if (typeof height === 'string') height = Number.parseInt(height)
         const min = Math.min(width, height)
         props.width = `${Math.round((width / min) * 100) / 100}em`
         props.height = `${Math.round((height / min) * 100) / 100}em`

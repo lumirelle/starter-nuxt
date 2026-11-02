@@ -27,6 +27,7 @@ export function createWebSiteSchema(options?: {
     '@type': 'WebSite',
     'name': options?.name ?? 'Starter template for Nuxt 4',
     'url': 'https://starter-nuxt.lumirelle.me',
-    'description': options?.description ?? 'This is a Nuxt 4 application template, built on top of Vite 8.',
+    'description':
+      options?.description ?? 'This is a Nuxt 4 application template, built on top of Vite 8.',
   }
 }

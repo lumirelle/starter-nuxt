@@ -17,10 +17,15 @@ useHead({
   meta: [{ name: 'color-scheme', content: colorScheme }],
 })
 
-if (import.meta.server)
-  setJsonLd(createWebSiteSchema())
+if (import.meta.server) setJsonLd(createWebSiteSchema())
 
-defineOgImage('Page.takumi', {}, { alt: 'Starter template for Nuxt 4 — This is a Nuxt 4 application template, built on top of Vite 8.' })
+defineOgImage(
+  'Page.takumi',
+  {},
+  {
+    alt: 'Starter template for Nuxt 4 — This is a Nuxt 4 application template, built on top of Vite 8.',
+  },
+)
 </script>
 
 <template>

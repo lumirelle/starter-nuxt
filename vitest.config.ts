@@ -23,35 +23,36 @@ export default defineConfig({
           environment: 'node',
         },
       },
-      () => defineVitestProject({
-        test: {
-          name: 'nuxt',
-          include: ['./test/nuxt/*.{test,spec}.ts'],
-          benchmark: { include: ['./test/nuxt/*.{bench,benchmark}.ts'] },
-          environment: 'nuxt',
-          /** @see https://github.com/npmx-dev/npmx.dev/blob/main/vite.config.ts#L235 */
-          environmentOptions: {
-            nuxt: {
-              rootDir,
-              overrides: {
-                vue: {
-                  runtimeCompiler: true,
+      async () =>
+        defineVitestProject({
+          test: {
+            name: 'nuxt',
+            include: ['./test/nuxt/*.{test,spec}.ts'],
+            benchmark: { include: ['./test/nuxt/*.{bench,benchmark}.ts'] },
+            environment: 'nuxt',
+            /** @see https://github.com/npmx-dev/npmx.dev/blob/main/vite.config.ts#L235 */
+            environmentOptions: {
+              nuxt: {
+                rootDir,
+                overrides: {
+                  vue: {
+                    runtimeCompiler: true,
+                  },
+                  experimental: {
+                    payloadExtraction: false,
+                    viteEnvironmentApi: false,
+                  },
+                  ogImage: false,
                 },
-                experimental: {
-                  payloadExtraction: false,
-                  viteEnvironmentApi: false,
-                },
-                ogImage: false,
               },
             },
+            browser: {
+              enabled: true,
+              provider: playwright(),
+              instances: [{ browser: 'chromium', headless: true }],
+            },
           },
-          browser: {
-            enabled: true,
-            provider: playwright(),
-            instances: [{ browser: 'chromium', headless: true }],
-          },
-        },
-      }),
+        }),
       {
         test: {
           name: 'e2e',

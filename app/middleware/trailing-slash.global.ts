@@ -7,9 +7,8 @@
  * - /package/vue/ → /package/vue
  * - /docs/getting-started/?query=value → /docs/getting-started?query=value
  */
-export default defineNuxtRouteMiddleware((to) => {
-  if (!import.meta.dev)
-    return
+export default defineNuxtRouteMiddleware(to => {
+  if (!import.meta.dev) return
 
   if (to.path !== '/' && to.path.endsWith('/')) {
     return navigateTo(
