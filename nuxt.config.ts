@@ -95,6 +95,7 @@ export default defineNuxtConfig({
    */
   experimental: {
     inlineRouteRules: true,
+    nitroAutoImports: true,
     typedPages: true,
   },
 
