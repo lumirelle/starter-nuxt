@@ -13,7 +13,6 @@ export const options = {
   vue: true,
   unocss: true,
   oxlint: true,
-  ignores: ['.agents/**', '.claude/**'],
   overrides: {
     // Formatting belongs to oxfmt; these template rules disagree with its Vue output.
     // Tracked in https://github.com/lumirelle/linter-config/issues/47.
